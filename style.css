@@ -1,0 +1,126 @@
+:root {
+    --bgColorMenu: #1d1d27;
+    --animation-duration: 0.7s;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    align-items: flex-end;
+    justify-content: center;
+    background-color: #ffb457;
+    transition: background-color var(--animation-duration) ease-out;
+}
+
+.menu {
+    display: flex;
+    width: 100%;
+    font-size: 0.8em;
+    padding: 0 2.85em;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bgColorMenu);
+}
+
+.menu-item {
+    all: unset;
+    flex-grow: 1;
+    display: flex;
+    cursor: pointer;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    padding: 0.55em 0 0.85em;
+
+    z-index: 100;
+    transition: transform var(--animation-duration);
+}
+
+.menu-item::before {
+    content: "";
+    z-index: -1;
+    width: 4.2em;
+    height: 4.2em;
+    border-radius: 50%;
+    position: absolute;
+    transform: scale(0);
+    transition: background-color var(--animation-duration), transform var(--animation-duration);
+}
+.menu-item.active {
+    transform: translate3d(0, -0.8em, 0);
+}
+
+.menu-item.active::before {
+    transform: scale(1);
+    background-color: var(--bgColorItem);
+}
+
+.icon {
+    width: 2.6em;
+    height: 2.6em;
+    stroke: white;
+    fill: transparent;
+    stroke-width: 1pt;
+    stroke-dasharray: 400;
+}
+
+.menu-item.active .icon {
+    animation: stroke 1s reverse;
+}
+
+@keyframes stroke {
+    100% {
+        stroke-dashoffset: 400;
+    }
+}
+
+.menu-border {
+    left: 0;
+    bottom: 99%;
+    width: 10.25em;
+    height: 2.4em;
+    position: absolute;
+    clip-path: url(#menu);
+    background-color: var(--bgColorMenu);
+}
+
+.menu-border.transition {
+    transition: transform var(--animation-duration);
+}
+
+.svg-container {
+    width: 0;
+    height: 0;
+}
+
+.orange {
+    --bgColorBody: #ffb457;
+    --bgColorItem: #ff8c00;
+}
+.pink {
+    --bgColorBody: #ff96bd;
+    --bgColorItem: #f54888;
+}
+
+.blue {
+    --bgColorBody: #9999fb;
+    --bgColorItem: #4343f5;
+}
+
+.yellow {
+    --bgColorBody: #ffe797;
+    --bgColorItem: #e0b115;
+}
+
+.teal {
+    --bgColorBody: #cffff1;
+    --bgColorItem: #65ddb7;
+}
